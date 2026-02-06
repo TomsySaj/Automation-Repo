@@ -1,5 +1,8 @@
 package seleniumBasics;
 
+import java.awt.Robot;
+import java.awt.event.KeyEvent;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -26,6 +29,14 @@ public class HandlingActions extends Base {
 		Actions a=new Actions(driver);
 		a.dragAndDrop(source, target).build().perform();
 	}
+	public void verifyKeyboardActions() throws Exception
+	{
+		Robot robot=new Robot();
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_T);
+		robot.keyRelease(KeyEvent.VK_T);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+	}
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -34,6 +45,12 @@ public class HandlingActions extends Base {
 		//handlingactions.rightClick();
 		//handlingactions.verifyMouseHover();
 		handlingactions.verifyDragAndDrop();
+		try {
+			handlingactions.verifyKeyboardActions();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		
 
